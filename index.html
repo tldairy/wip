@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Year Countdown</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      background:
+        radial-gradient(circle at top, #26345f 0%, transparent 45%),
+        linear-gradient(135deg, #080b18, #111936);
+      overflow: hidden;
+    }
+
+    .container {
+      width: min(900px, 92%);
+      padding: 50px 30px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2.2rem, 6vw, 5rem);
+      letter-spacing: -2px;
+    }
+
+    .subtitle {
+      margin: 0 0 40px;
+      color: #b9c2df;
+      font-size: 1.1rem;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .unit {
+      padding: 25px 10px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .number {
+      display: block;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1;
+      color: #ffffff;
+    }
+
+    .label {
+      display: block;
+      margin-top: 12px;
+      color: #9da8ca;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .message {
+      display: none;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 35px 18px;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .unit {
+        padding: 20px 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <h1>New Year Countdown</h1>
+    <p class="subtitle">Counting down to January 1, 2027 🎉</p>
+
+    <div class="countdown" id="countdown">
+      <div class="unit">
+        <span class="number" id="days">00</span>
+        <span class="label">Days</span>
+      </div>
+
+      <div class="unit">
+        <span class="number" id="hours">00</span>
+        <span class="label">Hours</span>
+      </div>
+
+      <div class="unit">
+        <span class="number" id="minutes">00</span>
+        <span class="label">Minutes</span>
+      </div>
+
+      <div class="unit">
+        <span class="number" id="seconds">00</span>
+        <span class="label">Seconds</span>
+      </div>
+    </div>
+
+    <div class="message" id="message">
+      🎆 Happy New Year! 🎆
+    </div>
+  </main>
+
+  <script>
+    function getNextYear() {
+      const now = new Date();
+      return new Date(now.getFullYear() + 1, 0, 1);
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const target = getNextYear();
+      const difference = target - now;
+
+      if (difference <= 0) {
+        document.getElementById("countdown").style.display = "none";
+        document.getElementById("message").style.display = "block";
+        return;
+      }
+
+      const seconds = Math.floor(difference / 1000);
+      const days = Math.floor(seconds / 86400);
+      const hours = Math.floor((seconds % 86400) / 3600);
+      const minutes = Math.floor((seconds % 3600) / 60);
+      const remainingSeconds = seconds % 60;
+
+      document.getElementById("days").textContent = String(days).padStart(2, "0");
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").textContent = String(remainingSeconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
