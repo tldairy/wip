@@ -2,7 +2,7 @@
 // COUNTDOWN
 // ========================================
 
-const countdownTarget = new Date(
+const newYear = new Date(
   "January 1, 2027 00:00:00"
 ).getTime();
 
@@ -10,7 +10,7 @@ const countdownTarget = new Date(
 function updateCountdown() {
 
   const now = Date.now();
-  const difference = countdownTarget - now;
+  const difference = newYear - now;
 
   if (difference <= 0) {
 
@@ -70,7 +70,7 @@ let slideshowTimer = null;
 
 
 // ========================================
-// GET PHOTOS FROM BACKEND
+// GET PHOTOS FROM STATIC MANIFEST
 // ========================================
 
 async function loadPhotos() {
@@ -78,7 +78,7 @@ async function loadPhotos() {
   try {
 
     const response =
-      await fetch("/api/photos");
+      await fetch("photos.json");
 
     if (!response.ok) {
       throw new Error("Failed to load photos");

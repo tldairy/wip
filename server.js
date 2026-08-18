@@ -24,7 +24,7 @@ if (!fs.existsSync(PHOTO_DIR)) {
 }
 
 console.log("=================================");
-console.log("Starting Countdown Website");
+console.log("Starting New Year Website");
 console.log("=================================");
 console.log("Website folder:", __dirname);
 console.log("Photos folder:", PHOTO_DIR);

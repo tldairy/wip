@@ -1,7 +1,7 @@
 {
-  "name": "photo-countdown",
+  "name": "new-year-countdown",
   "version": "1.0.0",
-  "description": "Countdown with automatic photo slideshow",
+  "description": "New Year countdown with automatic photo slideshow",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
