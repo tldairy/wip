@@ -2,7 +2,7 @@
 // COUNTDOWN
 // ========================================
 
-const newYear = new Date(
+const countdownTarget = new Date(
   "January 1, 2027 00:00:00"
 ).getTime();
 
@@ -10,7 +10,7 @@ const newYear = new Date(
 function updateCountdown() {
 
   const now = Date.now();
-  const difference = newYear - now;
+  const difference = countdownTarget - now;
 
   if (difference <= 0) {
 
