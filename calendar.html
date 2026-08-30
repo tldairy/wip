@@ -17,60 +17,95 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #222;
+            background: #f7f7f5;
+            color: #1f2937;
+        }
+
+        .back-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 25px;
+        background: linear-gradient(135deg, #00d4ff, #0099cc);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        text-align: center;
         }
 
         .calendar-container {
             max-width: 1400px;
-            margin: 40px auto;
-            padding: 20px;
+            margin: 32px auto;
+            padding: 24px;
         }
 
         .calendar-header {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             margin-bottom: 20px;
         }
 
         .calendar-header h1 {
             margin: 0;
-            font-size: 28px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: #111827;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 0 auto 24px;
         }
 
         .navigation button {
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 10px 16px;
-            margin-left: 5px;
-            border: none;
-            border-radius: 6px;
-            background-color: #333;
-            color: white;
+            border: 1px solid #d1d5db;
+            border-radius: 999px;
+            background: #ffffff;
+            color: #111827;
             cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .navigation button:hover {
-            background-color: #555;
+            background: #f3f4f6;
         }
 
         .calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 1px;
-            background-color: #ccc;
-            border: 1px solid #ccc;
+            gap: 10px;
+            background: transparent;
         }
 
         .day {
-            background-color: white;
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
             min-height: 500px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(17, 24, 39, 0.03);
         }
 
         .day-header {
             padding: 15px 10px;
             text-align: center;
-            background-color: #eee;
-            border-bottom: 1px solid #ccc;
+            background-color: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .day-name {
@@ -92,13 +127,154 @@
         }
 
         .event {
-            padding: 10px;
+            padding: 10px 12px;
             margin-bottom: 8px;
-            background-color: #dbeafe;
-            border-left: 4px solid #2563eb;
-            border-radius: 4px;
+            background-color: #f3f4f6;
+            border-left: 3px solid #9ca3af;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .weather-panel {
+            margin-top: 28px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 18px 20px;
+            box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
+        }
+
+        .weather-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .weather-header h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #0f172a;
+        }
+
+        .weather-meta {
+            color: #475569;
             font-size: 14px;
         }
+
+        .weather-current {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 18px;
+        }
+
+        .current-temp {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #0f172a;
+        }
+
+        .weather-emoji {
+            font-size: 42px;
+            line-height: 1;
+        }
+
+        .temperature {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .current-summary {
+            color: #1e293b;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(7, minmax(100px, 1fr));
+            gap: 12px;
+        }
+
+        .forecast-day {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 12px 10px;
+            text-align: center;
+            color: #0f172a;
+        }
+
+        .forecast-day .day-name {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .forecast-day .forecast-icon {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .forecast-day .forecast-high {
+            font-weight: 700;
+        }
+
+        .forecast-day .forecast-low {
+            color: #475569;
+        }
+
+        .banner-container {
+        width: 100%;
+        height: 400px; /* Adjust height as needed */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-FCgWAUOKSnbxGkpJ9DZqwD3c6ebJTaALkzPpB9RCpKHtKsJjTBoi3ug&s=10'); /* Adds a dark overlay so text is readable */
+        background-size: cover; /* Ensures the image covers the entire area */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center; /* Centers text vertically */
+        justify-content: center; /* Centers text horizontally */
+        text-align: center;
+        }
+
+        .banner-content {
+        color: white;
+        font-family: sans-serif;
+        padding: 20px;
+        }
+
+        .banner-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        }
+
+        .banner-btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 25px;
+        background-color: #ff4757;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        }
+
+        .box-1 {
+        /* Adds 20 pixels of space directly below the first div */
+        margin-bottom: 20px; 
+        }
+
 
         @media (max-width: 900px) {
             .calendar-container {
@@ -108,22 +284,72 @@
             .calendar {
                 min-width: 900px;
             }
+
+            .weather-grid {
+                grid-template-columns: repeat(4, minmax(100px, 1fr));
+            }
+        }
+
+        @media (max-width: 500px) {
+            .weather-grid {
+                grid-template-columns: repeat(2, minmax(100px, 1fr));
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="calendar-container">
 
-        <div class="calendar-header">
-            <h1 id="weekTitle">Weekly Calendar</h1>
+    <div class="banner-container">
+        <div class="banner-content">
+            <h1>Lịch Đi Chơi</h1>
+            <p>Yêu Em Lắm ❤️</p>
+            <a href="sad.html" class="banner-btn">Không Được Nhấn Nút Này</a>
+        </div>
+    </div>
 
+    <div class="box-1"></div>
+
+    <div class="calendar-header">
+        <h1 id="weekTitle"></h1>
+    </div>
+    <div class="navigation">
+        <button onclick="changeWeek(-1)">← Tuần Trước</button>
+        <button onclick="goToJanuaryFirst()">⛰️ Tuần Đi Sa Pa</button>
+        <button onclick="changeWeek(1)">Tuần Sau →</button>
+    </div>
+
+    <div class="calendar" id="calendar"></div>
+
+    <div class="weather-panel" id="weatherPanel">
+        <div class="weather-header">
+            <h2>🌤️ Thời Tiết Sa Pa</h2>
+            <div class="weather-meta" id="weatherUpdated">Updating…</div>
         </div>
 
-        <div class="calendar" id="calendar"></div>
+        <div class="weather-current">
+            <div class="current-temp">
+                <div class="weather-emoji" id="currentWeatherIcon">⏳</div>
+                <div>
+                    <div class="temperature" id="currentTemperature">--°C</div>
+                </div>
+            </div>
+            <div class="current-summary" id="currentSummary">Loading forecast…</div>
+        </div>
 
+        <div class="weather-grid" id="weatherForecast"></div>
     </div>
+
+    <div class="box-1"></div>
+
+    <div style="text-align: center;">
+        <a href="index.html" class="back-button">←</a>
+    </div>
+
+    <div class="box-1"></div>
+    <div class="box-1"></div>
+    <div class="box-1"></div>
 
     <script>
         // Read the date from the URL.
@@ -274,6 +500,7 @@
             currentDate.setDate(currentDate.getDate() + (amount * 7));
             updateURL();
             renderCalendar();
+            fetchWeather();
         }
 
         // Return to December 31, 2026
@@ -281,6 +508,7 @@
             currentDate = new Date("2026-12-31T00:00:00");
             updateURL();
             renderCalendar();
+            fetchWeather();
         }
 
         // Update the URL without reloading the page
@@ -299,6 +527,159 @@
 
         // Initial calendar
         renderCalendar();
+
+        // Weather forecast for the currently visible calendar window.
+        function formatISODate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, "0");
+            const day = String(date.getDate()).padStart(2, "0");
+            return `${year}-${month}-${day}`;
+        }
+
+        function getCalendarDateRange() {
+            const start = new Date(currentDate);
+            const end = new Date(currentDate);
+            end.setDate(end.getDate() + 6);
+
+            return {
+                startDate: formatISODate(start),
+                endDate: formatISODate(end)
+            };
+        }
+
+        function getWeatherLabel(code) {
+            const codes = {
+                0: { label: "Clear sky", icon: "☀️" },
+                1: { label: "Mostly clear", icon: "🌤️" },
+                2: { label: "Partly cloudy", icon: "⛅" },
+                3: { label: "Cloudy", icon: "☁️" },
+                45: { label: "Foggy", icon: "🌫️" },
+                48: { label: "Depositing rime fog", icon: "🌫️" },
+                51: { label: "Light drizzle", icon: "🌦️" },
+                53: { label: "Drizzle", icon: "🌦️" },
+                55: { label: "Heavy drizzle", icon: "🌧️" },
+                56: { label: "Freezing drizzle", icon: "🌧️" },
+                57: { label: "Heavy freezing drizzle", icon: "🌧️" },
+                61: { label: "Light rain", icon: "🌦️" },
+                63: { label: "Rain", icon: "🌧️" },
+                65: { label: "Heavy rain", icon: "🌧️" },
+                66: { label: "Freezing rain", icon: "🌧️" },
+                67: { label: "Heavy freezing rain", icon: "🌧️" },
+                71: { label: "Light snow", icon: "🌨️" },
+                73: { label: "Snow", icon: "❄️" },
+                75: { label: "Heavy snow", icon: "❄️" },
+                77: { label: "Snow grains", icon: "❄️" },
+                80: { label: "Rain showers", icon: "🌦️" },
+                81: { label: "Heavy showers", icon: "🌧️" },
+                82: { label: "Violent showers", icon: "⛈️" },
+                85: { label: "Snow showers", icon: "🌨️" },
+                86: { label: "Heavy snow showers", icon: "❄️" },
+                95: { label: "Thunderstorm", icon: "⛈️" },
+                96: { label: "Thunderstorm with hail", icon: "⛈️" },
+                99: { label: "Severe thunderstorm", icon: "⛈️" }
+            };
+
+            return codes[code] || { label: "Weather update", icon: "🌤️" };
+        }
+
+        async function getWeatherDataForWindow(startDate, endDate) {
+            const forecastUrl = `https://api.open-meteo.com/v1/forecast?latitude=22.336&longitude=103.843&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto&start_date=${startDate}&end_date=${endDate}`;
+
+            const forecastResponse = await fetch(forecastUrl);
+
+            if (forecastResponse.ok) {
+                return {
+                    source: "forecast",
+                    data: await forecastResponse.json()
+                };
+            }
+
+            const previousYearStart = new Date(startDate + "T00:00:00");
+            previousYearStart.setFullYear(previousYearStart.getFullYear() - 1);
+
+            const previousYearEnd = new Date(endDate + "T00:00:00");
+            previousYearEnd.setFullYear(previousYearEnd.getFullYear() - 1);
+
+            const archiveUrl = `https://archive-api.open-meteo.com/v1/archive?latitude=22.336&longitude=103.843&start_date=${formatISODate(previousYearStart)}&end_date=${formatISODate(previousYearEnd)}&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
+
+            const archiveResponse = await fetch(archiveUrl);
+
+            if (!archiveResponse.ok) {
+                throw new Error("Weather range unavailable");
+            }
+
+            return {
+                source: "historical",
+                data: await archiveResponse.json()
+            };
+        }
+
+        async function fetchWeather() {
+            const currentTemperature = document.getElementById("currentTemperature");
+            const currentWeatherIcon = document.getElementById("currentWeatherIcon");
+            const currentSummary = document.getElementById("currentSummary");
+            const weatherUpdated = document.getElementById("weatherUpdated");
+            const weatherForecast = document.getElementById("weatherForecast");
+
+            try {
+                const { startDate, endDate } = getCalendarDateRange();
+                const weatherResponse = await getWeatherDataForWindow(startDate, endDate);
+                const daily = weatherResponse.data.daily;
+
+                if (!daily || !daily.time || !daily.weather_code) {
+                    throw new Error("Missing weather data");
+                }
+
+                const selectedDates = [];
+                const start = new Date(currentDate);
+                for (let i = 0; i < 7; i++) {
+                    const date = new Date(start);
+                    date.setDate(start.getDate() + i);
+                    selectedDates.push(date);
+                }
+
+                const currentWeatherCode = daily.weather_code[0];
+                const currentWeather = getWeatherLabel(currentWeatherCode);
+                const currentTemp = Math.round((daily.temperature_2m_max[0] + daily.temperature_2m_min[0]) / 2);
+
+                currentTemperature.textContent = `${currentTemp}°C`;
+                currentWeatherIcon.textContent = currentWeather.icon;
+                currentSummary.textContent = `${currentWeather.label} • average for ${selectedDates[0].toLocaleDateString("en-US", { month: "short", day: "numeric" })}`;
+                weatherUpdated.textContent = weatherResponse.source === "forecast"
+                    ? `Updated ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`
+                    : "Estimated from similar dates";
+
+                weatherForecast.innerHTML = "";
+
+                selectedDates.forEach((date, index) => {
+                    const code = daily.weather_code[index];
+                    const weather = getWeatherLabel(code);
+                    const maxTemp = daily.temperature_2m_max[index];
+                    const minTemp = daily.temperature_2m_min[index];
+
+                    const item = document.createElement("div");
+                    item.className = "forecast-day";
+                    item.innerHTML = `
+                        <div class="day-name">${date.toLocaleDateString("en-US", { weekday: "short" })}</div>
+                        <div class="forecast-icon">${weather.icon}</div>
+                        <div class="forecast-high">${Math.round(maxTemp)}°</div>
+                        <div class="forecast-low">${Math.round(minTemp)}°</div>
+                    `;
+
+                    weatherForecast.appendChild(item);
+                });
+            } catch (error) {
+                console.error("Could not load weather forecast:", error);
+                currentTemperature.textContent = "--°C";
+                currentWeatherIcon.textContent = "⚠️";
+                currentSummary.textContent = "Weather unavailable for this date range";
+                weatherUpdated.textContent = "Check back later";
+                weatherForecast.innerHTML = "";
+            }
+        }
+
+        fetchWeather();
+        setInterval(fetchWeather, 30 * 60 * 1000);
     </script>
 
 </body>

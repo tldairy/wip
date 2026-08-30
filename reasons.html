@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 Lý Do</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .subtitle {
+      color: #888;
+      margin-top: 10px;
+      margin-bottom: 40px;
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    .reason-display {
+      background: #f5f5f5;
+      border: 2px solid #e0e0e0;
+      border-radius: 15px;
+      padding: 30px 20px;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .reason-text {
+      font-size: 20px;
+      color: #333;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-weight: 600;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .back-button {
+      margin-top: 20px;
+      background: #888;
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    .back-button:hover {
+      background: #666;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>❤️ 100 Lý Do</h1>
+    <p class="h2"> +20 Lý Do Bonus</p>
+
+    <p class="subtitle">Anh thích...</p>
+
+    <div class="reason-display">
+      <p class="reason-text" id="reasonText">Nhấn nút bên dưới...</p>
+    </div>
+
+    <button onclick="showRandomReason()">Tiết Lộ Một Lý Do</button>
+    <button class="back-button" onclick="window.history.back()">←</button>
+  </div>
+
+  <script>
+    const reasons = [
+        "1. Mái tóc của em.",
+        "2. Cái tên của em.",
+        "3. Sở thích của em.",
+        "4. Giọng nói của em.",
+        "5. Bàn tay của em.",
+        "6. Cái ôm của em.",
+        "7. Phong cách của em.",
+        "8. Cách nói chuyện của em.",
+        "9. Tính cách của em.",
+        "10. Sự hoàn hảo của em.",
+        "11. Niềm vui của em.",
+        "12. Những nỗi buồn của em.",
+        "13. Sự tha thứ của em.",
+        "14. Thông điệp trong lời em.",
+        "15. Tình yêu của em dành cho anh.",
+        "16. Việc em chia sé với anh.",
+        "17. Những video TikTok em gửi.",
+        "18. Cách em làm anh hạnh phúc.",
+        "19. Mùi hương tóc của em.",
+        "20. Những lân đùa vui của chúng mình.",
+        "21. Cách em nói chuyện không chán.",
+        "22. Em luôn làm anh an tâm.",
+        "23. Em rất độc lập.",
+        "24. Em luôn trong tâm trí anh.",
+        "25. Em không để anh chờ.",
+        "26. Em không làm anh thất vọng.",
+        "27. Em đáng tin cậy.",
+        "28. Cách em ủng hộ anh.",
+        "29. Cách em lắng nghe anh.",
+        "30. Cách em an ủi anh.",
+        "31. Sự kiên trì của em.",
+        "32. Em luôn bên anh lúc khó khăn.",
+        "33. Sự mạnh mẽ của em.",
+        "34. Những đam mê của em.",
+        "35. Những giấc mơ về em.",
+        "36. Cách em kiên nhẫn.",
+        "37. Tính tử tế của em.",
+        "38. Lòng bao dung của em.",
+        "39. Vì em yêu anh.",
+        "40. Niềm tin em dành cho anh.",
+        "41. Cách em hài hước.",
+        "42. Sự kiên định của em.",
+        "43. Em luôn chờ anh.",
+        "44. Cách em trả lời tin nhắn.",
+        "45. Cách em giải quyết vấn đề cùng anh.",
+        "46. Nụ cười của em.",
+        "47. Ánh mắt yêu thương của em.",
+        "48. Cách em động viên anh.",
+        "49. Cách em nắm tay anh.",
+        "50. Sự thấu hiểu của em.",
+        "51. Cách em chăm sóc anh khi ốm.",
+        "52. Những bữa ăn em nấu.",
+        "53. Cách em đạt gia đình lên đâu.",
+        "54. Cách em khiến anh đặc biệt.",
+        "55. Em làm anh muốn tốt hơn.",
+        "56. Sự tận tâm của em.",
+        "57. Cách em làm anh cảm thấy chấp nhận.",
+        "58. Cách em khiến anh cười.",
+        "59. Sự quan tâm của em.",
+        "60. Em luôn bên anh khi khó khăn.",
+        "61. Tình yêu em dành cho anh.",
+        "62. Cách em giải quyết mâu thuẫn.",
+        "63. Cách em làm anh quan tâm hơn.",
+        "64. Những kỷ niệm của chúng mình.",
+        "65. Cách em khiến anh tự tin.",
+        "66. Cách em động viên anh.",
+        "67. Cách em khiển anh tôn trọng anh.",
+        "68. Sự tự tin của em.",
+        "69. Versace.",
+        "70. Tình yêu em dành cho gia đình anh.",
+        "71. Cảm giác an toàn bên em.",
+        "72. Sự sáng tạo của em.",
+        "73. Cách em khích lệ anh.",
+        "74. Tình yêu em dành cho bạn bè anh.",
+        "75. Cách em làm anh cảm thấy hiểu.",
+        "76. Sự trung thực của em.",
+        "77. Cách em khiến anh tin tưởng.",
+        "78. Tình yêu em dành cho công việc anh.",
+        "79. Kiên trì của em trong mọi việc.",
+        "80. Em luôn yêu thương anh mỗi ngày.",
+        "81. Tình yêu em dành cho những điều nhỏ nhặt.",
+        "82. Cách em khiến anh cảm thấy trân trọng.",
+        "83. Sự nhạy cảm của em.",
+        "84. Cách em hiểu anh không lời.",
+        "85. Tình yêu em dành cho cuộc sống.",
+        "86. Cách em khiến anh hạnh phúc.",
+        "87. Sự tự lập của em.",
+        "88. Cách em làm anh cảm thấy tôn vinh.",
+        "89. Những kỷ niệm đẹp của chúng mình.",
+        "90. Sự an ủi của em.",
+        "91. Sự khéo léo của em.",
+        "92. Cách em hỗ trợ anh tinh thần.",
+        "93. Tình yêu em dành cho điều mới mẻ.",
+        "94. Cách em khiến anh tự hào.",
+        "95. Sự chân thành của em.",
+        "96. Cách em yêu thương anh vô điều kiện.",
+        "97. Sự tự tin trong quyết định của em.",
+        "98. Cách em hỗ trợ anh công việc.",
+        "99. Tình yêu em dành cho thiên nhiên.",
+        "100. Cảm giác an toàn khi bên em.",
+        "101. Sự sáng tạo giải quyết vấn đề.",
+        "102. Cách em khích lệ anh đam mê.",
+        "103. Tình yêu em dành cho động vật.",
+        "104. Sự thấu hiểu của em.",
+        "105. Sự trung thực trong cảm xúc của em.",
+        "106. Cách em khiến anh tin tưởng tình yêu.",
+        "107. Tình yêu em dành cho ấm thực.",
+        "108. Cách em giúp anh vượt qua áp lực.",
+        "109. Sự kiên trì của em với mục tiêu.",
+        "110. Cách em yêu thương anh mỗi ngày.",
+        "111. Tình yêu em dành cho điều giản dị.",
+        "112. Cách em trân trọng mọi điêu.",
+        "113. Sự nhạy cảm của em với cảm xúc người khác.",
+        "114. Cách em không để anh cảm thấy cô đơn.",
+        "115. Em yêu cuộc sống và truyền năng lượng.",
+        "116. Cách em làm ngày của anh đặc biệt.",
+        "117. Sự quan tâm em dành cho những chi tiết nhỏ.",
+        "118. Tình yêu em dành cho cuộc sống mới.",
+        "119. Cách em khiến mỗi ngày của anh trở nên đặc biệt.",
+        "120. Tình yêu em dành cho tất cả moi thứ xung quanh."
+    ];
+
+    function getRandomReason() {
+      return reasons[Math.floor(Math.random() * reasons.length)];
+    }
+
+    function showRandomReason() {
+      const reasonText = document.getElementById('reasonText');
+      reasonText.textContent = getRandomReason();
+    }
+
+    // Show first reason on page load
+    window.addEventListener('load', () => {
+      showRandomReason();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hôm Nay Ăn Gì?</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.7)
+      ), linear-gradient(
+        135deg,
+        #141e30,
+        #243b55
+      );
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .emoji {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .dish-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin: 20px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .dish-name {
+      font-size: 32px;
+      color: #d9534f;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+
+    .dish-description {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+
+    .btn-random {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .btn-random:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-back {
+      background: #6c757d;
+      color: white;
+    }
+
+    .btn-back:hover {
+      background: #5a6268;
+      transform: translateY(-2px);
+    }
+
+    .loading {
+      color: #999;
+      font-style: italic;
+    }
+
+    .error {
+      color: #d9534f;
+      font-size: 16px;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="emoji">🍜</div>
+    <h1>Hôm Nay Ăn Gì?</h1>
+    
+    <div id="dishContent" class="loading">
+      Đang tìm món ăn ngon cho bạn...
+    </div>
+
+    <div class="button-group">
+      <button class="btn-random" onclick="getRandomDish()">
+        🎲 Chọn Khác
+      </button>
+      <button class="btn-back" onclick="goBack()">
+        ← Quay Lại
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let dishes = [];
+
+    // Load dishes from JSON file
+    async function loadDishes() {
+      try {
+        const response = await fetch('dishes.json');
+        if (!response.ok) {
+          throw new Error('Failed to load dishes');
+        }
+        dishes = await response.json();
+        getRandomDish();
+      } catch (error) {
+        console.error('Error loading dishes:', error);
+        document.getElementById('dishContent').innerHTML = 
+          '<div class="error">❌ Lỗi khi tải danh sách món ăn. Vui lòng thử lại!</div>';
+      }
+    }
+
+    // Fetch image from Unsplash API
+    async function fetchUnsplashImage(query) {
+      try {
+        // Using Unsplash's direct URL without authentication (rate limited but works)
+        const searchParams = encodeURIComponent(query);
+        const response = await fetch(
+          `https://api.unsplash.com/search/photos?query=${searchParams}&per_page=1&client_id=Gb-jd_X0M-5yP6_FmLG8S-Gu7Mb-50IZBD2m7cwGDKk`
+        );
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch image from Unsplash');
+        }
+        
+        const data = await response.json();
+        if (data.results.length > 0) {
+          return data.results[0].urls.regular;
+        }
+        
+        // Fallback if no results
+        return `https://via.placeholder.com/600x400?text=${searchParams}`;
+      } catch (error) {
+        console.error('Error fetching from Unsplash:', error);
+        return `https://via.placeholder.com/600x400?text=${encodeURIComponent(query)}`;
+      }
+    }
+
+    // Get and display a random dish
+    async function getRandomDish() {
+      if (dishes.length === 0) {
+        document.getElementById('dishContent').innerHTML = 
+          '<div class="loading">Đang tải danh sách món ăn...</div>';
+        return;
+      }
+
+      const randomIndex = Math.floor(Math.random() * dishes.length);
+      const dish = dishes[randomIndex];
+
+      const dishContent = document.getElementById('dishContent');
+      dishContent.innerHTML = '<div class="loading">Đang tải ảnh từ Unsplash...</div>';
+
+      const imageUrl = await fetchUnsplashImage(dish.query);
+
+      dishContent.innerHTML = `
+        <img 
+          src="${imageUrl}" 
+          alt="${dish.name}" 
+          class="dish-image"
+          onerror="this.src='https://via.placeholder.com/600x400?text=${encodeURIComponent(dish.name)}'"
+        >
+        <div class="dish-name">${dish.name}</div>
+        <div class="dish-description">${dish.description}</div>
+      `;
+    }
+
+    // Go back to home page
+    function goBack() {
+      window.location.href = 'index.html';
+    }
+
+    // Load dishes when page loads
+    window.addEventListener('DOMContentLoaded', loadDishes);
+  </script>
+</body>
+
+</html>

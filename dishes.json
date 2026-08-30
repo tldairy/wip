@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Phở Bò",
+    "description": "Beef noodle soup with aromatic broth",
+    "query": "pho beef vietnamese"
+  },
+  {
+    "name": "Bánh Mì",
+    "description": "Crispy Vietnamese sandwich with pâté and pickled vegetables",
+    "query": "banh mi sandwich"
+  },
+  {
+    "name": "Gỏi Cuốn",
+    "description": "Fresh spring rolls with shrimp and herbs",
+    "query": "spring rolls fresh vegetables"
+  },
+  {
+    "name": "Cơm Tấm",
+    "description": "Broken rice with grilled pork and egg",
+    "query": "broken rice pork"
+  },
+  {
+    "name": "Bún Chả",
+    "description": "Grilled pork with rice vermicelli and dipping sauce",
+    "query": "grilled pork noodles"
+  },
+  {
+    "name": "Cơm Chiên",
+    "description": "Fried rice with egg and vegetables",
+    "query": "fried rice egg"
+  },
+  {
+    "name": "Lẩu Thái",
+    "description": "Thai hot pot with seafood and vegetables",
+    "query": "thai hot pot seafood"
+  },
+  {
+    "name": "Mì Xào",
+    "description": "Stir-fried noodles with meat and vegetables",
+    "query": "stir fried noodles meat"
+  },
+  {
+    "name": "Canh Chua Cá",
+    "description": "Sour soup with fish and pineapple",
+    "query": "fish soup pineapple"
+  },
+  {
+    "name": "Chả Cá Lã Vọng",
+    "description": "Turmeric fish with dill and crispy shallots",
+    "query": "turmeric fish"
+  },
+  {
+    "name": "Bún Bò Huế",
+    "description": "Spicy beef noodle soup from Hue",
+    "query": "beef noodle soup spicy"
+  },
+  {
+    "name": "Nem Rán",
+    "description": "Crispy fried spring rolls with dipping sauce",
+    "query": "fried spring rolls crispy"
+  },
+  {
+    "name": "Tôm Hùm Nướng",
+    "description": "Grilled lobster with garlic butter",
+    "query": "grilled lobster garlic"
+  },
+  {
+    "name": "Vịt Quay",
+    "description": "Crispy roasted duck with aromatic spices",
+    "query": "roasted duck crispy"
+  },
+  {
+    "name": "Cua Cà Chua",
+    "description": "Crab stir-fry with tomato sauce",
+    "query": "crab stir fry tomato"
+  }
+]
