@@ -97,6 +97,19 @@
       line-height: 1.4;
     }
 
+    .attraction-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    .attraction-image.loaded {
+      display: block;
+    }
+
     .back-button {
       display: inline-block;
       margin-top: 20px;
@@ -151,49 +164,59 @@
       <div class="attractions">
         <h2>🎯 Những Điểm Nổi Tiếng</h2>
         
-        <div class="attraction-item" onclick="goToLocation('Núi Fansipan', 22.3402, 103.8343)">
+        <div class="attraction-item" onclick="goToLocation('Núi Fansipan', 22.3033, 103.7750)">
+          <img class="attraction-image" src="" alt="Núi Fansipan" />
           <h3>Núi Fansipan</h3>
           <p>Đỉnh núi cao nhất tại Việt Nam và trên toàn bán đảo Đông Dương, được mệnh danh là "Nóc nhà Đông Dương".</p>
         </div>
 
-        <div class="attraction-item" onclick="goToLocation('Thị Trấn Sa Pa', 22.3265, 103.8408)">
+        <div class="attraction-item" onclick="goToLocation('Thị Trấn Sa Pa', 22.3356, 103.8438)">
+          <img class="attraction-image" src="" alt="Thị Trấn Sa Pa" />
           <h3>Thị Trấn Sa Pa</h3>
           <p>Nằm ở phía Tây Bắc Việt Nam, cách thủ đô Hà Nội khoảng 350km, Sapa là một trong những danh lam thắng cảnh đẹp nhất cả nước. Với độ cao 1.650 mét, thị trấn Sapa ẩn mình trong thung lũng được bao quanh bởi dãy núi Hoàng Liên Sơn</p>
         </div>
 
-        <div class="attraction-item" onclick="goToLocation('Chợ Tình', 22.3338, 103.8397)">
+        <div class="attraction-item" onclick="goToLocation('Chợ Tình', 22.3364, 103.8438)">
+          <img class="attraction-image" src="" alt="Chợ Tình" />
           <h3>Chợ Tình</h3>
           <p>Vốn được biết đến từ lâu, chợ tình Sapa thực chất là một trong những truyền thống tươi đẹp của đồng bào người dân tộc sinh sống tại mảnh đất Sa Pa. Đây là nét đẹp truyền thống không chỉ của riêng bất kì một dân tộc nào tại đây, mà nhiều dân tộc ở Sa Pa đều có chợ tình Sapa.</p>
         </div>
 
-        <div class="attraction-item" onclick="goToLocation('Thác Bạc', 22.3855, 103.8405)">
+        <div class="attraction-item" onclick="goToLocation('Thác Bạc', 22.3549, 103.7732)">
+          <img class="attraction-image" src="" alt="Thác Bạc" />
           <h3>Thác Bạc</h3>
           <p>Nằm trên đèo Ô Quy Hồ, cách trung tâm Sapa không xa, Thác Bạc là điểm dừng chân lý tưởng để cảm nhận rõ nét thiên nhiên núi rừng Tây Bắc. Dòng thác trắng xóa đổ từ trên cao xuống giữa không gian mát lành khiến nơi đây luôn đáng để ghé qua trong bất kỳ hành trình Sapa nào.</p>
         </div>
 
-        <div class="attraction-item" onclick="goToLocation('Làng Cát Cát', 22.3175, 103.8350)">
+        <div class="attraction-item" onclick="goToLocation('Làng Cát Cát', 22.3232, 103.8309)">
+          <img class="attraction-image" src="" alt="Làng Cát Cát" />
           <h3>Làng Cát Cát</h3>
           <p>Bản Cát Cát là một bản làng nhỏ thuộc địa phận xã Hoàng Liên, thị xã Sapa, tỉnh Lào Cai cũ (nay thuộc xã Tả Van, tỉnh Lào Cai). Nằm dưới chân núi Hoàng Liên Sơn, cách Hà Nội 376km và cách trung tâm thị xã Sapa gần 4km về hướng Tây Nam. Bản làng này được xem như “viên ngọc quý” của Sapa.</p>
         </div>
 
-        <div class="attraction-item" onclick="goToLocation('Đèo Tram Tôn', 22.3960, 103.7715)">
+        <div class="attraction-item" onclick="goToLocation('Đèo Tram Tôn', 22.3630, 103.7730)">
+          <img class="attraction-image" src="" alt="Đèo Trạm Tôn" />
           <h3>Đèo Trạm Tôn</h3>
           <p> Sa Pa nổi tiếng với phong cảnh đẹp như tranh vẽ với núi non trùng điệp, thung lũng xanh ngắt, những ngôi làng truyền thống của các dân tộc ít người, rừng tre và những đồng ruộng bậc thang. Để cảm nhận được hết vẻ đẹp của nơi đây, du khách cần phải lên Đèo Trạm Tôn hay Cổng Trời - con đèo trên núi cao nhất Việt Nam.</p>
         </div>
 
-        <div class="attraction-item" onclick="goToLocation('Núi Hàm Rồng', 22.3388, 103.8415)">
+        <div class="attraction-item" onclick="goToLocation('Núi Hàm Rồng', 22.3358, 103.8420)">
+          <img class="attraction-image" src="" alt="Núi Hàm Rồng" />
           <h3>Núi Hàm Rồng</h3>
           <p>Núi Hàm Rồng là một trong những điểm đến hấp dẫn nhất của Sa Pa. Với các loài hoa khoe sắc quanh năm, ngọn núi này tựa như khu vườn thượng uyển đầy thơ mộng. Không chỉ là địa điểm lý tưởng để ngắm toàn cảnh thị xã Sa Pa, đây còn là nơi để du khách tìm hiểu về văn hóa của các dân tộc người thiểu số. </p>
         </div>
 
-        <div class="attraction-item" onclick="goToLocation('Thung Lũng Mường Hoa', 22.3200, 103.8300)">
+        <div class="attraction-item" onclick="goToLocation('Thung Lũng Mường Hoa', 22.3080, 103.8620)">
+          <img class="attraction-image" src="" alt="Thung Lũng Mường Hoa" />
           <h3>Thung Lũng Mường Hoa</h3>
           <p>Vượt qua nhiều dãy núi cao mờ sương của núi rừng Tây Bắc, đến Sapa du khách sẽ lạch chân vào thung lũng Mường Hoa xa rời cõi thực. Như một bức tranh tuyệt mỹ được dệt nên bởi bàn tay tài hoa của thiên nhiên – Mường Hoa tạo cho lòng người những thanh âm du dương về một chốn bình yên giữa đại ngàn.</p>
         </div>
 
-        <div class="attraction-item" onclick="goToLocation('Laxsik Ecolodge', 22.1854, 103.5252)">
+        <div class="attraction-item" onclick="goToLocation('Laxsik Ecolodge', 22.3130, 103.8330)">
+          <img class="attraction-image" src="" alt="Laxsik Ecolodge" />
           <h3>Laxsik Ecolodge</h3>
-          <p>Laxsik Ecolodge là một lựa chọn lý tưởng cho những du khách muốn trải nghiệm cuộc sống thiên nhiên tại Sapa. Nằm giữa rừng núi và các cánh đồng bậc thang, nơi đây cung cấp không gian yên bình và cảnh quan tuyệt đẹp.</p>
+          <p>Cách đây nhiều thế kỷ ở Sapa, một bộ tộc bí ẩn đã xuất hiện; họ xây nhà trên những ngọn núi cao, nơi có địa hình hiểm trở và biến những nơi đó thành đất canh tác cho bộ tộc của mình. Ngày qua ngày, họ trở thành bộ tộc lớn nhất ở Sapa và họ là người H'Mông. Văn hóa của bộ tộc H'Mông đóng vai trò quan trọng trong việc hình thành văn hóa dân tộc ở Sapa. 
+Tất cả khung cảnh của bức tranh tuyệt đẹp đó đã giúp chúng tôi lên ý tưởng cho Lasik Ecolodge, theo thiết kế ban đầu là một ngôi làng người H'Mông đầu thế kỷ 20 ngay tại trung tâm Thung lũng Mường Hoa.</p>
         </div>
       </div>
     </div>
@@ -212,6 +235,19 @@
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19
     }).addTo(map);
+
+    // Predefined image URLs for attractions from web sources
+    const attractionImages = {
+      'Núi Fansipan': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbsQYnmw87c1c2dV88VaYoRo3WbyQMJ3tDElqTluqXcGcF0uUzqVrnd8Q&s=10',
+      'Thị Trấn Sa Pa': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxRl_WJBgX291Gf36Pyy5d048wjhy5mkdmslPqyoiHXdSpKK68qiUVHqRp&s=10',
+      'Chợ Tình': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ12ezSSISXGSIdyVChN0SLkheBnj-hfbx42EMUAazvlOI8on5BzRggj4Q&s=10',
+      'Thác Bạc': 'https://cdn.getyourguide.com/image/format=auto%2Cfit=crop%2Cgravity=auto%2Cquality=60%2Cwidth=400%2Cheight=265%2Cdpr=2/tour_img/1ebd43af0e88b7b5bd9f34eae4d0a205b262f0b134792966b6f7a0781f1702cc.jpg',
+      'Làng Cát Cát': 'https://lilystravelagency.com/wp-content/uploads/2025/10/image19.png',
+      'Đèo Trạm Tôn': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs7COLTJ-x5u2cv3BIVRTQ5ToYeC3lrhp8JEeq8i2pBHMpnLrMc44PyoZr&s=10',
+      'Núi Hàm Rồng': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-MtB6D6nVxXmcRBBmKcZ2a0c6329Z1hlBZ56Z6iKPcGsonZnamj2JVxU&s=10',
+      'Thung Lũng Mường Hoa': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHWlo6SjM9YiAoSZATRKXp6ue99rwf3F1FiegoqfcAJ8V8UYswDaeLGn8&s=10',
+      'Laxsik Ecolodge': 'https://www.laxsik.com/storage/rooms/1726545232_restaurant.png'
+    };
 
     // Define attractions with their coordinates
     const attractions = [
@@ -251,7 +287,7 @@
         emoji: '🏘️'
     },
     {
-        name: 'Đèo Tram Tôn',
+        name: 'Đèo Trạm Tôn',
         lat: 22.3630,
         lng: 103.7730,
         description: 'Dãy núi đẹp',
@@ -280,12 +316,41 @@
     }
     ];
 
-    // Add markers for each attraction
+    // Add markers for each attraction with images in popups
     attractions.forEach(attraction => {
+      const imageUrl = attractionImages[attraction.name] || '';
+      const popupContent = imageUrl 
+        ? `<div style="width: 250px;">
+             <img src="${imageUrl}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;" alt="${attraction.name}" />
+             <strong>${attraction.emoji} ${attraction.name}</strong><br>${attraction.description}
+           </div>`
+        : `<strong>${attraction.emoji} ${attraction.name}</strong><br>${attraction.description}`;
+      
       const marker = L.marker([attraction.lat, attraction.lng])
         .addTo(map)
-        .bindPopup(`<strong>${attraction.emoji} ${attraction.name}</strong><br>${attraction.description}`);
+        .bindPopup(popupContent);
     });
+
+    // Load images for sidebar attractions
+    function loadAttractionImages() {
+      const items = document.querySelectorAll('.attraction-item');
+      items.forEach((item, index) => {
+        const h3 = item.querySelector('h3');
+        const img = item.querySelector('.attraction-image');
+        if (h3 && img && attractions[index]) {
+          const attraction = attractions[index];
+          const imageUrl = attractionImages[attraction.name];
+          if (imageUrl) {
+            img.src = imageUrl;
+            img.classList.add('loaded');
+            img.onerror = () => {
+              console.log('Image failed to load for ' + attraction.name);
+              img.style.display = 'none';
+            };
+          }
+        }
+      });
+    }
 
     // Function to navigate to a location when clicked in the list
     function goToLocation(name, lat, lng) {
@@ -293,6 +358,11 @@
         duration: 2
       });
     }
+
+    // Load attraction images when page loads
+    document.addEventListener('DOMContentLoaded', loadAttractionImages);
+    // Also try loading immediately in case DOM is ready
+    loadAttractionImages();
   </script>
 </body>
 
