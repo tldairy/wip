@@ -36,6 +36,111 @@ body {
 }
 
 
+/* ========================================
+   PASSWORD GATE
+   ======================================== */
+
+.password-gate {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.password-gate.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.password-modal {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 50px 40px;
+  width: min(400px, 90%);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.password-modal h2 {
+  margin-bottom: 15px;
+  font-size: 28px;
+  color: white;
+}
+
+.password-modal p {
+  margin-bottom: 25px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.password-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.password-modal input[type="password"] {
+  padding: 12px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.password-modal input[type="password"]::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.password-modal input[type="password"]:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.password-modal button[type="submit"] {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.password-modal button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.password-modal button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 13px;
+  margin-top: 10px;
+  min-height: 18px;
+}
+
+
 .container {
   width: min(900px, 92%);
 

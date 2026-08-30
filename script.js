@@ -1,4 +1,50 @@
 // ========================================
+// PASSWORD GATE
+// ========================================
+
+const CORRECT_PASSWORD = "sapa";
+
+function submitPassword(event) {
+  event.preventDefault();
+  
+  const passwordInput = document.getElementById("passwordInput");
+  const errorMessage = document.getElementById("errorMessage");
+  const passwordGate = document.getElementById("passwordGate");
+  
+  if (passwordInput.value === CORRECT_PASSWORD) {
+    // Correct password - hide gate and save to localStorage
+    localStorage.setItem("passwordGateUnlocked", "true");
+    passwordGate.classList.add("hidden");
+    errorMessage.textContent = "";
+  } else {
+    // Wrong password - show error
+    errorMessage.textContent = "❌ Sai mật khẩu, thử lại nha!";
+    passwordInput.value = "";
+  }
+}
+
+function checkPasswordGate() {
+  // Check if user has already unlocked the gate
+  if (localStorage.getItem("passwordGateUnlocked") === "true") {
+    const passwordGate = document.getElementById("passwordGate");
+    passwordGate.classList.add("hidden");
+  } else {
+    // Focus password input when page loads
+    setTimeout(() => {
+      document.getElementById("passwordInput").focus();
+    }, 100);
+  }
+}
+
+// Run password gate check when page loads
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", checkPasswordGate);
+} else {
+  checkPasswordGate();
+}
+
+
+// ========================================
 // COUNTDOWN
 // ========================================
 

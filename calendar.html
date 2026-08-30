@@ -134,16 +134,46 @@
         const activities = {
             "2026-12-31": [
                 {
-                    time: "9:00 AM",
-                    title: "Khời hành đi Sa Pa",
-                    description: "Choo Choo! 🚂"
+                    time: "12:00 AM",
+                    title: "Chúc Mừng Năm Mới 2027 🎉",
+                    description: "Chúc em một năm mới tràn đầy niềm vui, sức khỏe và hạnh phúc! 🥳"
                 },
             ],
             "2027-01-01": [
                 {
+                    time: "1:00 AM",
+                    title: "Lên Đỉnh Fansipan @ Hà Nội",
+                    description: "Versace on the floor năm mới 🫦"
+                },
+                {
                     time: "9:00 AM",
                     title: "Khời hành đi Sa Pa",
-                    description: "Choo Choo! 🚂"
+                    description: "Bíp Bíp! 🚌"
+                },
+                {
+                    time: "1:00 PM",
+                    title: "Check-in khách sạn",
+                    description: "View Sa Pa đẹp mê ly 😍"
+                },
+                {
+                    time: "2:00 PM",
+                    title: "Versace @ Khách Sạn Mới, View Đẹp",
+                    description: "Hiệp 2 e ơi 🤯"
+                },
+                {
+                    time: "3:00 PM",
+                    title: "Ngủ Trưa",
+                    description: "Zzzz 😪"
+                },
+                {
+                    time: "5:00 PM",
+                    title: "Versace lần 3???",
+                    description: "10đ 🫶"
+                },
+                {
+                    time: "7:00 PM",
+                    title: "Ăn Tối",
+                    description: "Thưởng thức đặc sản Sa Pa 🍲"
                 },
             ],
         };
@@ -246,9 +276,9 @@
             renderCalendar();
         }
 
-        // Return to January 1, 2027
+        // Return to December 31, 2026
         function goToJanuaryFirst() {
-            currentDate = new Date("2027-01-01T00:00:00");
+            currentDate = new Date("2026-12-31T00:00:00");
             updateURL();
             renderCalendar();
         }
