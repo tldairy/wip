@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bản Đồ Sa Pa - Những Điểm Đi Chơi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .header p {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    #map {
+      height: 500px;
+      border-radius: 10px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .attractions {
+      overflow-y: auto;
+      max-height: 500px;
+      padding-right: 10px;
+    }
+
+    .attractions h2 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .attraction-item {
+      background: rgba(255, 255, 255, 0.15);
+      border-left: 4px solid #00d4ff;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .attraction-item:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateX(5px);
+    }
+
+    .attraction-item h3 {
+      color: #00d4ff;
+      margin-bottom: 5px;
+    }
+
+    .attraction-item p {
+      font-size: 0.9em;
+      opacity: 0.8;
+      line-height: 1.4;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .back-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+
+      #map {
+        height: 400px;
+      }
+
+      .header h1 {
+        font-size: 2em;
+      }
+    }
+
+    .leaflet-popup-content {
+      color: #333;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>🏔️ Khám Phá Những Địa Điểm Đẹp Nhất Sa Pa</h1>
+    <p>Nhấp vào các điểm trên bản đồ hoặc danh sách bên để tìm hiểu thêm về các địa điểm nổi tiếng.</p>
+  </div>
+
+  <div class="container">
+    <div class="content">
+      <div id="map"></div>
+
+      <div class="attractions">
+        <h2>🎯 Những Điểm Nổi Tiếng</h2>
+        
+        <div class="attraction-item" onclick="goToLocation('Núi Fansipan', 22.3402, 103.8343)">
+          <h3>Núi Fansipan</h3>
+          <p>Đỉnh núi cao nhất tại Việt Nam và trên toàn bán đảo Đông Dương, được mệnh danh là "Nóc nhà Đông Dương".</p>
+        </div>
+
+        <div class="attraction-item" onclick="goToLocation('Thị Trấn Sa Pa', 22.3265, 103.8408)">
+          <h3>Thị Trấn Sa Pa</h3>
+          <p>Nằm ở phía Tây Bắc Việt Nam, cách thủ đô Hà Nội khoảng 350km, Sapa là một trong những danh lam thắng cảnh đẹp nhất cả nước. Với độ cao 1.650 mét, thị trấn Sapa ẩn mình trong thung lũng được bao quanh bởi dãy núi Hoàng Liên Sơn</p>
+        </div>
+
+        <div class="attraction-item" onclick="goToLocation('Chợ Tình', 22.3338, 103.8397)">
+          <h3>Chợ Tình</h3>
+          <p>Vốn được biết đến từ lâu, chợ tình Sapa thực chất là một trong những truyền thống tươi đẹp của đồng bào người dân tộc sinh sống tại mảnh đất Sa Pa. Đây là nét đẹp truyền thống không chỉ của riêng bất kì một dân tộc nào tại đây, mà nhiều dân tộc ở Sa Pa đều có chợ tình Sapa.</p>
+        </div>
+
+        <div class="attraction-item" onclick="goToLocation('Thác Bạc', 22.3855, 103.8405)">
+          <h3>Thác Bạc</h3>
+          <p>Nằm trên đèo Ô Quy Hồ, cách trung tâm Sapa không xa, Thác Bạc là điểm dừng chân lý tưởng để cảm nhận rõ nét thiên nhiên núi rừng Tây Bắc. Dòng thác trắng xóa đổ từ trên cao xuống giữa không gian mát lành khiến nơi đây luôn đáng để ghé qua trong bất kỳ hành trình Sapa nào.</p>
+        </div>
+
+        <div class="attraction-item" onclick="goToLocation('Làng Cát Cát', 22.3175, 103.8350)">
+          <h3>Làng Cát Cát</h3>
+          <p>Bản Cát Cát là một bản làng nhỏ thuộc địa phận xã Hoàng Liên, thị xã Sapa, tỉnh Lào Cai cũ (nay thuộc xã Tả Van, tỉnh Lào Cai). Nằm dưới chân núi Hoàng Liên Sơn, cách Hà Nội 376km và cách trung tâm thị xã Sapa gần 4km về hướng Tây Nam. Bản làng này được xem như “viên ngọc quý” của Sapa.</p>
+        </div>
+
+        <div class="attraction-item" onclick="goToLocation('Đèo Tram Tôn', 22.3960, 103.7715)">
+          <h3>Đèo Trạm Tôn</h3>
+          <p> Sa Pa nổi tiếng với phong cảnh đẹp như tranh vẽ với núi non trùng điệp, thung lũng xanh ngắt, những ngôi làng truyền thống của các dân tộc ít người, rừng tre và những đồng ruộng bậc thang. Để cảm nhận được hết vẻ đẹp của nơi đây, du khách cần phải lên Đèo Trạm Tôn hay Cổng Trời - con đèo trên núi cao nhất Việt Nam.</p>
+        </div>
+
+        <div class="attraction-item" onclick="goToLocation('Núi Hàm Rồng', 22.3388, 103.8415)">
+          <h3>Núi Hàm Rồng</h3>
+          <p>Núi Hàm Rồng là một trong những điểm đến hấp dẫn nhất của Sa Pa. Với các loài hoa khoe sắc quanh năm, ngọn núi này tựa như khu vườn thượng uyển đầy thơ mộng. Không chỉ là địa điểm lý tưởng để ngắm toàn cảnh thị xã Sa Pa, đây còn là nơi để du khách tìm hiểu về văn hóa của các dân tộc người thiểu số. </p>
+        </div>
+
+        <div class="attraction-item" onclick="goToLocation('Thung Lũng Mường Hoa', 22.3200, 103.8300)">
+          <h3>Thung Lũng Mường Hoa</h3>
+          <p>Vượt qua nhiều dãy núi cao mờ sương của núi rừng Tây Bắc, đến Sapa du khách sẽ lạch chân vào thung lũng Mường Hoa xa rời cõi thực. Như một bức tranh tuyệt mỹ được dệt nên bởi bàn tay tài hoa của thiên nhiên – Mường Hoa tạo cho lòng người những thanh âm du dương về một chốn bình yên giữa đại ngàn.</p>
+        </div>
+
+        <div class="attraction-item" onclick="goToLocation('Laxsik Ecolodge', 22.1854, 103.5252)">
+          <h3>Laxsik Ecolodge</h3>
+          <p>Laxsik Ecolodge là một lựa chọn lý tưởng cho những du khách muốn trải nghiệm cuộc sống thiên nhiên tại Sapa. Nằm giữa rừng núi và các cánh đồng bậc thang, nơi đây cung cấp không gian yên bình và cảnh quan tuyệt đẹp.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <a href="index.html" class="back-button">←  Đếm Ngược</a>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script>
+    // Initialize map centered on Sa Pa
+    const map = L.map('map').setView([22.3265, 103.8408], 13);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19
+    }).addTo(map);
+
+    // Define attractions with their coordinates
+    const attractions = [
+    {
+        name: 'Núi Fansipan',
+        lat: 22.3033,
+        lng: 103.7750,
+        description: 'Đỉnh cao nhất Đông Dương - 3.147m',
+        emoji: '⛰️'
+    },
+    {
+        name: 'Thị Trấn Sa Pa',
+        lat: 22.3356,
+        lng: 103.8438,
+        description: 'Kiến trúc thực dân & chợ địa phương',
+        emoji: '🏛️'
+    },
+    {
+        name: 'Chợ Tình',
+        lat: 22.3364,
+        lng: 103.8438,
+        description: 'Chợ truyền thống dân tộc',
+        emoji: '🏪'
+    },
+    {
+        name: 'Thác Bạc',
+        lat: 22.3549,
+        lng: 103.7732,
+        description: 'Thác nước đẹp & con đường trekking',
+        emoji: '💧'
+    },
+    {
+        name: 'Làng Cát Cát',
+        lat: 22.3232,
+        lng: 103.8309,
+        description: 'Làng dân tộc Hmong',
+        emoji: '🏘️'
+    },
+    {
+        name: 'Đèo Tram Tôn',
+        lat: 22.3630,
+        lng: 103.7730,
+        description: 'Dãy núi đẹp',
+        emoji: '🛣️'
+    },
+    {
+        name: 'Núi Hàm Rồng',
+        lat: 22.3358,
+        lng: 103.8420,
+        description: 'Điểm ngắm cảnh & vườn hoa',
+        emoji: '🌺'
+    },
+    {
+        name: 'Thung Lũng Mường Hoa',
+        lat: 22.3080,
+        lng: 103.8620,
+        description: 'Ruộng bậc thang & tầm nhìn núi',
+        emoji: '🌾'
+    },
+    {
+        name: 'Laxsik Ecolodge',
+        lat: 22.3130,
+        lng: 103.8330,
+        description: 'Versace',
+        emoji: '🏡'
+    }
+    ];
+
+    // Add markers for each attraction
+    attractions.forEach(attraction => {
+      const marker = L.marker([attraction.lat, attraction.lng])
+        .addTo(map)
+        .bindPopup(`<strong>${attraction.emoji} ${attraction.name}</strong><br>${attraction.description}`);
+    });
+
+    // Function to navigate to a location when clicked in the list
+    function goToLocation(name, lat, lng) {
+      map.flyTo([lat, lng], 15, {
+        duration: 2
+      });
+    }
+  </script>
+</body>
+
+</html>

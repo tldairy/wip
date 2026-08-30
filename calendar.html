@@ -128,20 +128,26 @@
         const dateParameter = urlParams.get("date");
 
         const activities = {
-            "2027-01-01": [
+            "2026-12-31": [
                 {
-                    time: "9:00 PM",
+                    time: "9:00 AM",
                     title: "Khời hành đi Sa Pa",
                     description: "Choo Choo! 🚂"
                 },
-
+            ],
+            "2027-01-01": [
+                {
+                    time: "9:00 AM",
+                    title: "Khời hành đi Sa Pa",
+                    description: "Choo Choo! 🚂"
+                },
             ],
         };
 
-        // Default to January 1, 2027 if no date is provided.
+        // Default to December 31, 2026 if no date is provided.
         let currentDate = dateParameter
             ? new Date(dateParameter + "T00:00:00")
-            : new Date("2027-01-01T00:00:00");
+            : new Date("2026-12-31T00:00:00");
 
         // Display a seven-day period beginning with currentDate.
         function renderCalendar() {
