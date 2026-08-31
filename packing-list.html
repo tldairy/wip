@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Packing List - Cao Đao</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .packing-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .packing-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .packing-item {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      margin: 8px 0;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .packing-item:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .packing-item input[type="checkbox"] {
+      margin-right: 15px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .packing-item label {
+      cursor: pointer;
+      flex: 1;
+      font-size: 16px;
+    }
+
+    .packing-item input[type="checkbox"]:checked + label {
+      opacity: 0.6;
+      text-decoration: line-through;
+    }
+
+    .back-button {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .back-button button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <main class="container packing-container">
+
+    <h1>🎒 Checklist Đi Chơi</h1>
+
+    <div class="back-button">
+      <button onclick="window.location.href='index.html'">
+        ←
+      </button>
+    </div>
+
+    <ul class="packing-list">
+      <li class="packing-item">
+        <input type="checkbox" id="item1">
+        <label for="item1">Áo ấm / Áo khoác</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item2">
+        <label for="item2">Quần dài</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item3">
+        <label for="item3">Tất (dày + mỏng)</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item4">
+        <label for="item4">Mũ / Nón</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item5">
+        <label for="item5">Khăn quàng cổ</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item6">
+        <label for="item6">Giày trekking / giày thể thao</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item7">
+        <label for="item7">Dép / giày casual</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item8">
+        <label for="item8">Balo / túi xách</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item9">
+        <label for="item9">Đồ lót</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item10">
+        <label for="item10">Áo phông / Áo trong</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item12">
+        <label for="item12">Bàn chải đánh răng + kem đánh răng</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item13">
+        <label for="item13">Dầu gội + sữa tắm</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item15">
+        <label for="item15">Thuốc (nếu có)</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item16">
+        <label for="item16">Kem chống nắng</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item19">
+        <label for="item19">Điện thoại + sạc</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item20">
+        <label for="item20">Căn cước / Hộ chiếu</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item22">
+        <label for="item22">Vé tàu</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item23">
+        <label for="item23">Camera / GoPro</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item25">
+        <label for="item25">Tai nghe</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item27">
+        <label for="item27">Đồ ăn vặt</label>
+      </li>
+
+      <li class="packing-item">
+        <input type="checkbox" id="item30">
+        <label for="item30">Đủ đồ rồi 🎉</label>
+      </li>
+    </ul>
+
+  </main>
+
+  <script>
+    // Save checkbox states to localStorage
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      // Load saved state
+      const saved = localStorage.getItem('packing-' + checkbox.id);
+      if (saved === 'true') {
+        checkbox.checked = true;
+      }
+
+      // Save state on change
+      checkbox.addEventListener('change', () => {
+        localStorage.setItem('packing-' + checkbox.id, checkbox.checked);
+      });
+    });
+  </script>
+
+</body>
+
+</html>
