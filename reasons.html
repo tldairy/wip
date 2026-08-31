@@ -247,14 +247,18 @@
         "119. Cách em khiến mỗi ngày của anh trở nên đặc biệt.",
         "120. Tình yêu em dành cho tất cả moi thứ xung quanh."
     ];
+    counter = 0;
 
-    function getRandomReason() {
-      return reasons[Math.floor(Math.random() * reasons.length)];
-    }
+    // function getRandomReason() {
+    //   return reasons[
+    //     Math.floor(Math.random() * reasons.length)];
+    // }
 
     function showRandomReason() {
+      // counter = 0
       const reasonText = document.getElementById('reasonText');
-      reasonText.textContent = getRandomReason();
+      reasonText.textContent = reasons[counter];
+      counter = (counter + 1) % reasons.length;
     }
 
     // Show first reason on page load
